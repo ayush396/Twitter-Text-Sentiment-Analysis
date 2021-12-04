@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSV File to HTML Table Using AJAX jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='style1.css')}}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+
+            <div class="" style="display: inline-block;">
+                <h1><img src="{{ url_for('static',filename='twitter.png')}}" class="image" style="width:100px;" alt="">Tweets of @{{fname}}
+            </div>
+
+            <div class="" style="display: inline-block; font-size:1.8rem; margin-left:450px;  ">
+                <table style="margin-top: 40px;">
+                    <tr>
+                        <td><img src="{{ url_for('static',filename='happy.png')}} " width="30px" alt=""></td>
+                        <th> Positive Tweets:</th>
+
+                        <td>{{pos}}</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{{ url_for('static',filename='sad.png')}} " width="30px" alt=""></td>
+                        <th>Negative Tweets:</th>
+                        <td>{{neg}}</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{{ url_for('static',filename='neutral.png')}} " width="30px" alt=""></td>
+                        <th>Neutral Tweets:</th>
+                        <td>{{neutral}}</td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+
+
+            </h1>
+
+            <hr style="border-top: 10px solid #8c8b8b;">
+        </div>
+        <div class="table-responsive">
+
+
+
+            <br />
+            <div id="employee_table">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        window.onload = function() {
+
+
+
+
+            $.ajax({
+
+                url: "{{url_for('static',filename='tweet.csv')}}",
+                dataType: "text",
+                success: function(data) {
+                    var employee_data = data.split(/\r?\n|\r/);
+                    var table_data = '<table class="table table-bordered table-striped">';
+                    for (var count = 0; count < employee_data.length; count++) {
+                        var cell_data = employee_data[count].split(",");
+                        table_data += '<tr>';
+                        for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
+                            if (count === 0) {
+                                table_data += '<th style="text-align:center;font-size:2rem;color:purple;">' + cell_data[cell_count] + '</th>';
+                            } else {
+                                if (cell_count == cell_data.length - 1)
+                                    table_data += '<td class="emoji">' + cell_data[cell_count] + '</td>';
+                                else
+                                    table_data += '<td>' + cell_data[cell_count] + '</td>';
+                            }
+                        }
+                        table_data += '</tr>';
+                    }
+                    table_data += '</table>';
+                    $('#employee_table').html(table_data);
+                }
+            });
+
+        };
+    </script>
+    <div class="footer" style="margin-bottom:20px;">
+        <p> Copyright 2021 @Ayubir.</p>
+    </div>
+
+
+</body>
+
+</html>

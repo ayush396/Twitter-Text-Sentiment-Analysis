@@ -1,0 +1,71 @@
+.header {
+    background-color: #3d799c;
+    height: 200px;
+    width: 100%;
+}
+
+.wrapper {
+    background-color: black;
+    position: absolute;
+    top: 20px;
+    margin: auto;
+    margin-top: 8%;
+    width: 65%;
+    background-color: white;
+    min-height: 20px;
+    border: 2px solid #000;
+    left: 20%;
+    box-shadow: 5px 5px #95adcc;
+}
+
+.ex {
+    margin-right: 0;
+}
+
+.heading {
+    text-align: center;
+    font-size: 2rem;
+    padding: 30px;
+    padding-left: 200px;
+    color: white;
+    margin-right: 200px;
+}
+
+.main {
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+    top: 5px;
+    background-color: #ccc;
+    text-align: center;
+    padding: 3% 10% 5%;
+}
+
+.inside-tweet {
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+    top: 5px;
+    background-color: #ccc;
+    text-align: center;
+    padding: 3% 10% 5%;
+}
+
+.inside-manual {
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+    top: 5px;
+    background-color: #ccc;
+    text-align: center;
+    padding: 3% 10% 5%;
+}
+
+.back {
+    text-decoration: none;
+    color: blue;
+}
+
+.back:hover {
+    color: white;
+}
